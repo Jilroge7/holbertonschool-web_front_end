@@ -166,8 +166,8 @@ a:active {
 .nav {
     margin: 0;
     padding: 0;
-    text-align: center;
     list-style: none;
+    text-align: center;
 }
 
 .nav-item {
@@ -182,7 +182,7 @@ a:active {
 .nav-link {
     display: block;
     padding-top: .5rem;
-    padding-bottom:.5rem;
+    padding-bottom: .5rem;
     padding-left: 1rem;
     padding-right: 1rem; 
 }
