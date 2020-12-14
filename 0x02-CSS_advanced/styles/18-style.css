@@ -170,7 +170,7 @@ a:active {
     list-style: none;
 }
 
-nav.nav-item {
+.nav-item {
     font-family: var(--nav-item-font-family);
     font-weight: var(--nav-item-font-weight);
     font-size: var(--nav-item-font-size);
@@ -179,7 +179,7 @@ nav.nav-item {
     margin: var(--nav-item-margin);
 }
 
-nav.nav-link {
+.nav-link {
     display: block;
     padding-top: .5rem;
     padding-bottom:.5rem;
@@ -187,7 +187,7 @@ nav.nav-link {
     padding-right: 1rem; 
 }
 
-nav.nav-link:hover {
+.nav-link:hover {
     color: var(--nav-item-link-hover);
 }
 
