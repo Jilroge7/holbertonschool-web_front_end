@@ -44,12 +44,6 @@ html {
     font-size: 62.5%;
 }
 
-html[data-section-theme="dark"] {
-    --text-color: var(--color-white);
-    --section-title-color: var(--color-white);
-    background-color: var(--color-black);
-}
-
 :root {
     --color-primary: #d73953;
     --color-black: #090909;
@@ -87,6 +81,12 @@ html[data-section-theme="dark"] {
     --nav-item-margin: 0 0 3rem;
     --nav-item-link-hover: var(--color-primary);
     --section-tagline-margin: 0;
+}
+
+[data-section-theme="dark"] {
+    --text-color: var(--color-white);
+    --section-title-color: var(--color-white);
+    background-color: var(--color-black);
 }
 
 body {
