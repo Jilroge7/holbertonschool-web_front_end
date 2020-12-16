@@ -1,0 +1,16 @@
+/* Sass file that assigns color #3D3D3D to tags body and p & background color #6D6D6D to body and h2 */
+$mycolor: #3D3D3D;
+$back_color: #6D6D6D;
+
+body {
+    color: $mycolor;
+    background-color: $back_color;
+}
+
+p {
+    color: $mycolor;
+}
+
+h2 {
+    background-color: $back_color;
+}
