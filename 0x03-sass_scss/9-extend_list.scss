@@ -1,0 +1,13 @@
+/* Sass file that assigns font size 12px to .info, color #00FF00 .success and extend style .info, text color #FF0000 .warning and extend style .info */
+.info {
+    font-size: 12px;
+}
+.success { 
+    color: #00FF00;
+    @extend .info;
+}
+
+.warning {
+    color: #FF0000;
+    @extend .info;
+}
