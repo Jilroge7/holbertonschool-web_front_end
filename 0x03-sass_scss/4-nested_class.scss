@@ -1,0 +1,11 @@
+/* Sass file that assigns color #3D3D3D to elements inside body tags and color #FF0000 to any elements of class .red inside body tags */
+$mycolor1: #3D3D3D;
+$mycolor2: #FF0000;
+
+body {
+    color: $mycolor1;
+
+    .red {
+        color: $mycolor2;
+    }
+}
