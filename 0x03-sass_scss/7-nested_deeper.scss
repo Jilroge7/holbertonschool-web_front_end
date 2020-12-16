@@ -1,0 +1,10 @@
+/* Sass file that assigns a font size 14px to body, font size 16px to h1 tags inside body, font size 12px to h1 tags of .smaller inside body */
+body {
+    font-size: 14px;
+    h1 {
+        font-size: 16px;
+        &.smaller {
+            font-size: 12px;
+        }
+    }
+}
