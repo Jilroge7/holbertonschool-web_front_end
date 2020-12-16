@@ -83,6 +83,12 @@ html {
     --section-tagline-margin: 0;
 }
 
+html[data-section-theme="dark"] {
+    --text-color: var(--color-white);
+    --section-title-color: var(--color-white);
+    background-color: var(--color-black);
+}
+
 body {
     color: var(--text-color);
     font-family: var(--font-family-base);
@@ -123,12 +129,6 @@ a:active {
 
 .section {
     padding: var(--section-padding);
-}
-
-:root[data-section-theme="dark"] {
-    --text-color: var(--color-white);
-    --section-title-color: var(--color-white);
-    background-color: var(--color-black);
 }
 
 .section-header {
