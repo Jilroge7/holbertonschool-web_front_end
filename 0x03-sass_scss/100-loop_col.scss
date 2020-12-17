@@ -1,0 +1,9 @@
+/* Sass file that creates classes with different width */
+$col_sizes: ("1": 100%, "2": 50%, "3": 33.3333333333%, "4": 25%);
+
+@each $name, $size in $col_sizes {
+    col-#{$name} {
+        width: #{$size};
+    }
+    
+}
