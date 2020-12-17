@@ -1,7 +1,8 @@
 /* Sass file that creates classes with different width */
-@for $i from 1 through 4 {
-    col-#{$i} {
-        width: 100% / $i;
+$columns: 4;
+@for $i from 1 through $columns {
+    .col-#{$i} {
+        width: (100% / $i);
     }
     
 }
