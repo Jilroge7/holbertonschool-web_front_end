@@ -1,4 +1,4 @@
-/* version 23, fix dark mode issues in footer*/
+/* version 22, add dark mode */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html{line-height:1.15;-webkit-text-size-adjust:100%}
 body{margin:0}
@@ -238,10 +238,14 @@ ul.row {
     color: var(--text-color);
 }
 
-.footer-address[data-section-theme="dark"] {
-    color: --text-color;
+.footer-address {
+    color: var(--text-color);
 }
 
-.social-link[data-section-theme="dark"] {
+.social-link {
     display: block;
+}
+
+.social-link svg {
+    color: var(--text-color);
 }
