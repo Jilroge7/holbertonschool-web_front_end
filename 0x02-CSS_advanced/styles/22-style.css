@@ -5,12 +5,6 @@
     box-sizing: border-box;
 }
 
-[data-section-theme=“dark”] {
-    --text-color: var(--color-white);
-    --section-title-cover: var(--color-white);
-    background-color: var(--color-black);
-}
-
 html {
     scroll-behavior: smooth;
     font-size: 62.5%;
@@ -53,6 +47,12 @@ html {
     --nav-item-margin: 0 0 3rem;
     --nav-item-link-hover: var(--color-primary);
     --section-tagline-margin: 0;
+}
+
+[data-section-theme=“dark”] {
+    --text-color: var(--color-white);
+    --section-title-cover: var(--color-white);
+    background-color: var(--color-black);
 }
 
 body {
