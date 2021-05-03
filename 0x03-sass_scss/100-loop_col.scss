@@ -1,0 +1,8 @@
+/* sass file to demonstrate looping with operators to create styles */
+$columns: 4;
+
+@for $i from 1 through $columns {
+    .col-#{$i} {
+        width: (100% / $i);
+    }
+}
