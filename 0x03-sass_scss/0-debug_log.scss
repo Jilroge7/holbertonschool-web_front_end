@@ -1,0 +1,4 @@
+/* sass file that prints debug log to output */
+div {
+    @debug "Hello world";
+}
