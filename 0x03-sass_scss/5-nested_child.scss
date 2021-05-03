@@ -1,0 +1,8 @@
+/* sass file that assigns styling to body element and nestd child */
+
+body {
+    color: #3D3D3D;
+    > .red {
+        color: #FF0000;
+    }
+}
