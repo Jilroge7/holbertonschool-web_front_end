@@ -1,0 +1,6 @@
+/* sorts variable and prints to debug output */
+@import '103-sort_list';
+
+@each $name in $list_to_sort {
+    @debug #{$name};
+}
