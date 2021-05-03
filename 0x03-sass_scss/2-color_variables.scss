@@ -1,0 +1,16 @@
+/* assigns 2 color variables to tags body, p, and h2*/
+$mycolor: #3D3D3D;
+$mybackgroundcolor: #6D6D6D;
+
+body {
+    color: $mycolor;
+    background-color: $mybackgroundcolor;
+}
+
+p {
+    color: $mycolor;
+}
+
+h2 {
+    background-color: $mybackgroundcolor;
+}
