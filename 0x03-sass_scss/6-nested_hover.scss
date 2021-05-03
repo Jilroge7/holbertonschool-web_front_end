@@ -1,0 +1,8 @@
+/* sass file that assigns styling to button element and nested hover tag */
+
+button {
+    color: #FF0000;
+    :hover {
+        color: #00FF00;
+    }
+}
