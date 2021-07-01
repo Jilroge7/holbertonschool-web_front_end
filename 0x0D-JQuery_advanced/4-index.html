@@ -4,14 +4,16 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Task 2</title>
+        <title>Task 4</title>
         <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
         <script type="application/javascript">
-            function createFamilyTree() {
+            function replaceFamilyTree() {
 
-                $("body").append("<table><thead><tr><th>Firstname</th><th>Lastname</th></tr></thead><tbody><tr><td>Guillaume</td><td>Salva</td></tr><tr><td>Paulette</td><td>Salva</td></tr><tr><td>Antoine</td><td>Salva</td></tr></tbody></table>");
+                $("table").html("<table><thead><tr><th>Firstname</th><th>Lastname</th></tr></thead><tbody><tr><td>Gerard</td><td>Bonissa</td></tr></tbody></table>");
+            
             }
             createFamilyTree();
+            replaceFamilyTree();
         </script>
 
     </head>
