@@ -17,18 +17,17 @@
             function createFamilyTree() {
 
                 $("body").append("<table>");
-                $("body").append("<thead>");
-                $("body").append("<tbody>");
+                $("table").append("<thead>");
+                $("table").append("<tbody>");
                 $("thead").append("<tr>");
                 $("thead tr").append($("<th>").text("Firstname"), $("<th>").text("Lastname"));
             }
 
             function addNewMember(firstName, lastName) {
-                console.log("hello");
-                $("tbody").append($("<tr>").append('<td>${firstName}<td>${lastName}', $("<td>(x)</td>").css("background", "orange").click(function() {
+               
+                $("tbody").append($("<tr>").append(`<td>${firstName}<td>${lastName}`, $("<td>(x)</td>").css("background", "orange").click(function() {
                         $(this).closest("tr").remove() })));
             }
-            console.log("hi");
             createFamilyTree();
             addNewMember("Guillaume", "Salva");
             addNewMember("Arielle", "Snizt");
