@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 11</title>
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="application/javascript">
+            $(document).ready(function () {
+                function addPostRow(data) {
+                    $("body").append(`<p><span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span></p>`);
+                }
+
+                function listPosts() {
+                    $.get("http://localhost:3000/posts", function (result) {
+                        result.forEach(post => {
+                            addPostRow(post);
+                        });
+                    }).fail(function () {
+                        alert("Server Error");
+                    });
+                }
+
+                function buildForm() {
+                    ("body").append("<form>");
+                    $("form").append('<div><label for="author">Author</label><input type="text"id ="author"/></div></form>');
+                    $("form").append('<div><label for="title">Title</label><textarea id ="title"/></div></form>');
+                    $("form").append('input type="submit"/>');
+                    $("submit").click(function () {
+                        sendForm();
+                    });
+                }
+
+                function sendForm() {
+                    $("form").after("About to send the query to the API");
+                    var formContent = {title:$("#title").val(), author:$("#author").val()};
+                    
+                    $.ajax({url: "http://localhost:3000/posts", type: 'POST', data: formContent
+                        success: function (result) {
+                            addPostRow(result);
+                        },
+                        error: () => {
+                            alert("Error sending POST query");
+                        }
+                    });
+                }
+                listPosts();
+                buildForm();
+            });
+        </script>
+
+    
+
+    
+
+    </body>
+    
+</html>
