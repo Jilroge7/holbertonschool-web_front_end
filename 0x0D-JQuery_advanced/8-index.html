@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 8</title>
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="application/javascript">
+            $(document).ready(function() {
+                function createSearchForm () {
+                    $("body").append('<input type="text"/>');
+                    $("body").append('<input type="submit"/>');
+                    $("submit").click(function () {
+                        queryWikipedia($("input").val());
+                    })
+                    $("body").append("<ul></ul>");
+                    $("body").append('<ul id="pagination"></ul>');
+                }
+
+                function addNewArticle(id, title, snippet) {
+                    $("ul").append(`<li><p><span>${id} - <b>${title}</b></span></p><p>${snippet}</p></li>`);
+                }
+
+                function queryWikipedia(search, offset = 0) {
+                    var url = "https://en.wikipedia.org/w/api.php";
+
+                    var params = {
+                        action: "query",
+                        list: "search",
+                        srsearch: search,
+                        format: "json",
+                        sroffset: offset
+                    };
+                    url = url + "?origin=*";
+                    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+
+                    fetch(url)
+                        .then(function(response){return response.json();})
+                        .then(function(response) {
+                            let results = response.query.search;
+                            results.forEach((result) => {
+                                addNewArticle(result.pageid, result.title, result.snippet);
+                            });
+                            buildPagination(response.query.searchinfo.totalhits, 10, offset);              
+                        })
+                        .catch(function(error){console.log(error);});
+                }
+
+                function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+                    $("#pagination").empty();
+                    for (let i = 0; i < (numberOfItems / itemsPerPage); i++) {
+                        let pageNum = $("<li></li>").html(i + 1);
+                        $("pageNum").css({"cursor": "pointer", "margin-left": "10px", "font-weight": "bold"});
+                    }
+                    $("#pagination").append(pageNum);
+                }
+                
+                createSearchForm();
+                });
+        </script>
+
+    
+
+    
+
+    </body>
+    
+</html>
