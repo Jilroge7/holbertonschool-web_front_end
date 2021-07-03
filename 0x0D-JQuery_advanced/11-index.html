@@ -25,11 +25,12 @@
                 }
 
                 function buildForm() {
-                    ("body").append("<form>");
+                    $("body").append("<form>");
                     $("form").append('<div><label for="author">Author</label><input type="text"id ="author"/></div></form>');
                     $("form").append('<div><label for="title">Title</label><textarea id ="title"/></div></form>');
-                    $("form").append('input type="submit"/>');
-                    $("submit").click(function () {
+                    $("form").append('<input type="submit">');
+                    $("form").submit(function (event) {
+                        event.preventDefault();
                         sendForm();
                     });
                 }
@@ -38,14 +39,10 @@
                     $("form").after("About to send the query to the API");
                     var formContent = {title:$("#title").val(), author:$("#author").val()};
                     
-                    $.ajax({url: "http://localhost:3000/posts", type: 'POST', data: formContent
-                        success: function (result) {
-                            addPostRow(result);
-                        },
-                        error: () => {
-                            alert("Error sending POST query");
-                        }
-                    });
+                    $.post("http://localhost:3000/posts", formContent)
+                        $.done((data) => addPostRow(data));
+                        $.fail((data) => alert("Error sending the POST query"));
+                            
                 }
                 listPosts();
                 buildForm();
