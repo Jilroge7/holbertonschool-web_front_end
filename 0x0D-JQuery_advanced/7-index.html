@@ -9,43 +9,42 @@
     <body>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="application/javascript">
+            $(document).ready(function() {  
+                function createSearchForm () {
+                    $("body").append('<input type="text"/>');
+                    $("body").append('<input type="submit"/>');
+                    $("submit").click(function () {
+                        queryWikipedia($("input").val());
+                    })
+                    $("body").append("<ul></ul>");
+                }
 
-            function createSearchForm () {
-                $("body").append('<input type="text"/>');
-                $("body").append('<input type="submit"/>');
-                $("submit").click(function () {
-                    queryWikipedia($("input").val());
-                })
-                $("body").append("<ul></ul>");
-            }
+                function addNewArticle(id, title, snippet) {
+                    $("ul").append(`<li><p><span>${id} - <b>${title}</b></span></p><p>${snippet}</p></li>`);
+                }
 
-            function addNewArticle(id, title, snippet) {
-                $("ul").append(`<li><p><span>${id} - <b>${title}</b></span></p><p>${snippet}</p></li>`);
-            }
+                function queryWikipedia(search) {
+                    var url = "https://en.wikipedia.org/w/api.php";
 
-            function queryWikipedia(search) {
-                var url = "https://en.wikipedia.org/w/api.php";
+                    var params = {
+                        action: "query",
+                        list: "search",
+                        srsearch: search,
+                        format: "json"
+                    };
+                    url = url + "?origin=*";
+                    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
 
-                var params = {
-                    action: "query",
-                    list: "search",
-                    srsearch: search,
-                    format: "json"
-                };
-                url = url + "?origin=*";
-                Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
-
-                fetch(url)
-                    .then(function(response){return response.json();})
-                    .then(function(response) {
-                        let results = response.query.search;
-                        results.forEach((result) => {
-                            addNewArticle(result.pageid, result.title, result.snippet);
-                        });               
+                    fetch(url)
+                        .then(function(response){return response.json();})
+                        .then(function(response) {
+                            let results = response.query.search;
+                            results.forEach((result) => {
+                                addNewArticle(result.pageid, result.title, result.snippet);
+                            });               
                     })
                     .catch(function(error){console.log(error);});
-            }
-            $(document).ready(function() {
+                }              
                 createSearchForm();    
             });
             
