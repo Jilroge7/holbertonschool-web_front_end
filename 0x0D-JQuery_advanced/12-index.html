@@ -11,9 +11,12 @@
         <script type="application/javascript">
             $(document).ready(function () {
                 function addPostRow(data) {
-                    $("body").append(`<p><span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span></p>`);
+                    $("body").append(`<p id="row-${id}"><span>(delete)></span><span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span></p>`);
+                    $("p span").first().click( function() {
+                        deletePost(data.id);
+                    })
                 }
-                
+
                 function listPosts() {
                     $.get("http://localhost:3000/posts") 
                         .done((data) => data.forEach(item => addPostRow(item)))
@@ -21,7 +24,6 @@
                             alert("Server Error")
                     });
                 }
-                
 
                 function buildForm() {
                     $("body").append("<form>");
@@ -39,9 +41,15 @@
                     var formContent = {title:$("#title").val(), author:$("#author").val()};
                     
                     $.post("http://localhost:3000/posts", formContent)
-                        $.done((data) => addPostRow(data));
-                        $.fail((data) => alert("Error sending the POST query"));
+                        .done((data) => addPostRow(data))
+                        .fail((data) => alert("Error sending the POST query"))
                             
+                }
+
+                function deletePost(id) {
+                    $.delete("http://localhost:3000/posts", id)
+                        .done((data) => $('#row-' + id).remove())
+                        .fail((data) => alert("Post was not deleted"))
                 }
                 listPosts();
                 buildForm();

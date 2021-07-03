@@ -15,14 +15,13 @@
                 }
 
                 function listPosts() {
-                    $.get("http://localhost:3000/posts", function (result) {
-                        result.forEach(post => {
-                            addPostRow(post);
-                        });
-                    }).fail(function () {
-                        alert("Server Error");
+                    $.get("http://localhost:3000/posts") 
+                        .done((data) => data.forEach(item => addPostRow(item)))
+                        .fail(function () {
+                            alert("Server Error")
                     });
                 }
+                
                 listPosts();
             });
         </script>
