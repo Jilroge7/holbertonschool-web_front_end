@@ -9,13 +9,11 @@
     <body>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="application/javascript">
-            $(document).ready(function() {  
+            $(document).ready(function () {  
                 function createSearchForm () {
                     $("body").append('<input type="text"/>');
-                    $("body").append('<input type="submit"/>');
-                    $("submit").click(function () {
-                        queryWikipedia($("input").val());
-                    })
+                    $("body").append($('<input type="submit"/>').click(() =>
+                        queryWikipedia($("input").val())));
                     $("body").append("<ul></ul>");
                 }
 
@@ -24,27 +22,24 @@
                 }
 
                 function queryWikipedia(search) {
-                    var url = "https://en.wikipedia.org/w/api.php";
+                    let url = "https://en.wikipedia.org/w/api.php";
 
-                    var params = {
+                    let params = {
                         action: "query",
                         list: "search",
                         srsearch: search,
-                        format: "json"
+                        format: "json",
                     };
                     url = url + "?origin=*";
-                    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+                    Object.keys(params).forEach((key) => {
+                        url += "&" + key + "=" + params[key];});
 
-                    fetch(url)
-                        .then(function(response){return response.json();})
-                        .then(function(response) {
-                            let results = response.query.search;
-                            results.forEach((result) => {
-                                addNewArticle(result.pageid, result.title, result.snippet);
-                            });               
-                    })
-                    .catch(function(error){console.log(error);});
-                }              
+                    $.getJSON(url, response =>
+                        response.query.search.forEach(data => {
+                            addNewArticle(data.pageid, data.title, data.snippet);             
+                    }));
+                    
+                }            
                 createSearchForm();    
             });
             
