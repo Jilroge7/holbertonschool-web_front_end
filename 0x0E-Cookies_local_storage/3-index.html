@@ -7,10 +7,12 @@
         <title>Task 3</title>
     </head>
     <body>
-        <h1>Login to the website</h1>
-        <input type="text" id="firstname" placeholder="Firstname">
-        <input type="email" id="email" placeholder="Email">
-        <button id="login">Log me in</button>
+        <div id="form">
+            <h1>Login to the website</h1>
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="email" id="email" placeholder="Email">
+            <button id="login">Log me in</button>
+        </div>
         <script>
             function setCookies() {
                 let date = new Date();
@@ -22,6 +24,7 @@
             }
 
             function showCookies() {
+                hideCookies();
                 let paragraph = document.createElement("p");
                 paragraph.innerHTML = "Email: " + getCookie('email') + " - Firstname: " + getCookie('firstname');
                 document.body.append(paragraph);
@@ -42,16 +45,25 @@
                     document.getElementById("welcomeMess").remove();
                 }
                 document.getElementById("form").style.display = "block";
+                hideCookies();
+            }
+
+            function hideCookies() {
+                let currCookies = document.getElementById('cookies');
+                if (currCookies)
+                    currCookies.remove();
             }
 
             function hideForm() {
                 let frm = document.getElementById("form");
                 frm.style.display = "none";
+                hideCookies();
             }
 
             function deleteCookiesAndShowForm() {
-                document.cookie = "expires=Thu, 01 Jan 1970 00:00:00 GMT";
                 showForm();
+                document.cookie = "expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                
             }
 
             function showWelcomeMessageOrForm() {
@@ -72,7 +84,10 @@
                     
                 }
             }
-            showWelcomeMessageOrForm();
+            document.getElementById('login').onclick = () => {
+                setCookies();
+                showWelcomeMessageOrForm();
+            };
         </script>
 
     
